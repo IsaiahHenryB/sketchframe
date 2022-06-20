@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700;900&display=swap" rel="stylesheet">
+    <script th:src="@{~/js/script.js}" defer></script>
+    <script src="https://kit.fontawesome.com/e6cba708a8.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" th:href="@{~/styles/main.css}">
+    <link rel="icon" th:href="@{~/img/sketchframe.ico}">
+    <title>SketchFrame: Create</title>
+</head>
+<body>
+    <header>
+        <div th:insert="fragments/nav :: nav"></div>
+        <div class="banner" th:style="'background-image:url(' + @{~/img/Background1.png} + '); background-repeat: no-repeat, repeat; background-size: cover;'">
+            <h1>UPDATE<pre></pre>Update Image Info</h1>
+        </div>
+    </header>
+    <div class="content">
+
+        <h1>Get Started</h1>
+        <div sec:authorize="isAuthenticated()" id="uploadform">
+        <form th:action="@{/update}" method="POST" th:object="${artwork}" class="centered">
+            <h3>Update Canvas Info</h3>
+            <img width="200px" th:src="*{image}">
+            <input type="hidden" th:field="*{id}">
+            <input type="hidden" th:field="*{image}">
+            <input type="hidden" th:field="*{username}">
+            <input type="hidden" th:field="*{params}">
+            <input type="hidden" id="showOutline" th:field="*{showOutlines}">
+            <input type="hidden" id="outlineWidth" th:field="*{outlineWidth}">
+            <input type="hidden" id="outlineColor" th:field="*{outlineColor}">
+            <input type="hidden" id="opacity" th:field="*{opacity}">
+            <input type="hidden" id="minStrokeWidth" th:field="*{minStrokeWidth}">
+            <input type="hidden" id="maxStrokeWidth" th:field="*{maxStrokeWidth}">
+            <input type="hidden" id="strokeAngle" th:field="*{strokeAngle}">
+            <input type="hidden" id="layers" th:field="*{layers}">
+            <input type="hidden" id="colorFill" th:field="*{colorFill}">
+            <input type="hidden" id="colorSelection" th:field="*{colorSelection}">
+            <input type="hidden" id="palette" th:field="*{palette}">
+            <label for="Title">Title</label>
+            <input type="text" id="title" name="title" th:field="*{title}" placeholder="Title" required>
+            <label for="isAccessible">Public</label>
+            <select class="form-control" th:field="*{isAccessible}" required>
+                <option th:value="1" >Yes</option>
+                <option th:value="0" >No</option>
+            </select>
+            <button>Update</button>
+        </form>
+        </div>
+    </div>
+    <footer>
+        <p>&copy SketchFrame 2022</p>
+    </footer>
+</body>
+</html>

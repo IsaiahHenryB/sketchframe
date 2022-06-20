@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{~/styles/main.css}">
+    <script th:src="@{~/js/script.js}" defer></script>
+    <script src="https://kit.fontawesome.com/e6cba708a8.js" crossorigin="anonymous"></script>
+    <link rel="icon" th:href="@{~/img/sketchframe.ico}">
+    <title>SketchFrame: About</title>
+</head>
+<body>
+    <header>
+        <div th:insert="fragments/nav :: nav"></div>
+        <div class="banner " th:style="'background-image:url(' + @{~/img/Background2.png} + '); background-repeat: no-repeat, repeat; background-size: cover;'">
+            <h1>ABOUT<pre></pre>Learn More About This Website!</h1>
+        </div>
+    </header>
+    <div class="content">
+        <div class="onlytext">
+        <h2>About</h2>
+        <img src="./img/applogo.png" height="70px" alt="">
+        <p>SketchFrame is an app that allows users to generate abstract art using a JavaScript library called p5.js and upload it to their profiles. People on the site can view all the public creations of the previous users and even download them.</p>
+
+        <h2>So What's Up With This Website?</h2>
+        <p>This is a website that utilizes just a few properties of a JavaScript framework called p5 to generate art. The art generated is based on strokes and outlines. The JavaScript code randomizes the starting angle of the first stroke and color palette, then creates proceeding strokes next to the first generated stroke depending on the angle selected. Tweaking parameters can yield nearly endless possibilities.</p>
+        
+        <p>On the <a href="/create">create page</a> you can edit the parameters of the controls and see this in action for yourself.</p>
+        <h2>Inspiration</h2>
+        <p>The art creator is based off of a p5 demonstration by <a href="https://youtube.com/c/StevesMakerspace" target="_blank">Steve's Makerspace</a>. Please check out his youtube channel for more p5 goodies! Though this abstract art generator does quite a bit of things, you will find that there's literally endless potential for what you can do using the great JavaScript library called p5.js!</p>
+        </div>
+        <h2>Any Other Questions? No Problem!</h2>
+        <form id="message" action="https://formsubmit.co/b5f954811189ea495fee3f741e1d6be3" method="POST">
+            <input type="hidden" name="_subject" value="Question About SketchFrame">
+            <input type="hidden" name="_next" value="http://localhost:8080/sent">
+            <h3>Send Me A Message</h3>
+            <!-- Adding regex validation for the name field to restrict numbers and silly characters but allowing hyphenated names -->
+            <label for="name">Name</label>
+            <input type="text" pattern="[a-zA-Z.\-_]+$" placeholder="Type Your Name Here" name="name" required>
+            <!-- Regex validation pattern for submitting the correct email format -->
+            <label for="email">Email</label>
+            <input type="email" pattern="(\w\.?)+@[\w\.-]+\.\w{2,4}" placeholder="Type Your Email Here" name="email" required>
+            <label for="message">Message</label>
+            <textarea class="textbox" name="message" placeholder="Type Your Message Here" id="" cols="30" rows="10" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+    <footer>
+        <p>&copy SketchFrame 2022</p>
+    </footer>
+</body>
+</html>

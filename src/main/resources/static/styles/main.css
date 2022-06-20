@@ -1,0 +1,383 @@
+/* Normalizer */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    max-width: 100vw;
+}
+body{
+    font-size: 120%;
+    font-family: 'Lato', sans-serif;
+    background-color: rgb(31, 31, 31);
+    max-width: 100vw;
+}
+ul{
+    list-style-type: none;
+}
+a{
+    text-decoration: none;
+    color:rgb(255, 255, 255);
+}
+i{
+    color: white;
+}
+h1 i,
+h2 i{
+    color: lime;
+}
+p{
+    display: inline-block;
+}
+.orange{
+    color: #FF6000 !important;
+}
+.green{
+    color: lime !important;
+}
+.good{
+	border: 2px lime solid;
+	background-color: rgba(0, 255, 0, 0.2);
+	color: lime;
+	border-radius: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.bad{
+	border: 2px #FF6000 solid;
+	background-color: rgba(245, 113, 39, 0.2);
+	color: #FF6000 !important;
+	border-radius: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.little{
+    font-size: 55%;
+}
+/* Mobile 1st */
+header{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+nav{
+    width: 100%;
+    background-color: rgb(46, 46, 46);
+    color: white;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+.navimg{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
+.navimg i:hover{
+    transition: color 400ms ease;
+    color: #FF6000;
+}
+.navimg img{
+    height:40px;
+}
+/* Makes it so that ul is unseen unless you trigger the showMe function in scripts.js */
+.navbar-ul{
+    display: none;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+}
+.disappear{
+	display: none;
+}
+.show{
+    display: block !important;
+}
+.navbar-ul{
+    width: 100%;
+}
+.navbar-ul li{
+    width: 100%;
+    padding:15px;
+    margin: 0;
+}
+.navbar-ul li:hover{
+    transition: background-color 400ms ease;
+    background-color: #FF6000;
+}
+.banner{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    color: white;
+}
+
+.content{
+    margin: auto;
+    display: flex;
+    flex-flow: column nowrap;
+    width: 90%;
+    min-height: 100vh;
+    padding: 5px;
+    text-align: center;
+    align-items: center;
+    color: white;
+}
+.content > div{
+    width: 100%;
+}
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5{
+    color: lime;
+    padding: 10px;
+}
+.content p{
+    padding: 10px;
+}
+.onlytext{
+    max-width: 600px;
+    margin: 0px auto;
+}
+.workspace{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    width: fit-content;
+    max-width: 1200px;
+    height: fit-content;
+    overflow-x: auto;
+}
+.controls{
+    min-width: 250px;
+    max-width: 250px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    text-align: center;
+}
+#params{
+    min-width: 95%;
+}
+#params label{
+    color: #FF6000;
+}
+#myCanvas{
+    width: 800px;
+    height: 800px;
+    background-color: rgb(120, 120, 120);
+}
+.hide{
+    opacity: 0;
+    max-width: 0;
+    max-height: 0;
+    float: left;
+    padding: 0;
+    margin: 0;
+}
+.vanish{
+    display: none;
+}
+p a{
+    color: lime;
+}
+p a:hover{
+    transition: color 400ms ease;
+    color: #FF6000;
+}
+.rows{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+}
+.rows .imgbox{
+    width: 90%;
+}
+.rows div{
+        margin: 15px auto;
+    }
+.imgbox img{
+    width: 250px;
+    border-radius: 4px;
+}
+.imgbox img:hover{
+    transition: border 400ms ease;
+    border: 3px solid #FF6000;
+}
+.display img{
+    width: 80%;
+    margin-bottom: 40px;
+}
+form{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    width: 80%;
+    background-color: rgba(0, 0, 0, 0.47);
+    padding: 10px;
+    border-radius: 5px;
+}
+form button, button{
+    color: white;
+    background-color: #FF6000;
+    border: none;
+    border-radius: 5px;
+    width: 60%;
+    padding: 10px;
+    margin:5px auto;
+}
+form button:hover, button:hover{
+    transition: background-color 400ms ease;
+    transition: color 400ms ease;
+    background-color: lime;
+    color: rgba(0, 0, 0, 0.63);
+}
+.goodbutton{
+    background-color: lime;
+    color: rgba(0, 0, 0, 0.63);
+    border: lime 2px solid;
+    border-radius: 5px;
+    width: 60%;
+    padding: 10px;
+    margin:5px auto;
+}
+.goodbutton:hover{
+    transition: background-color 400ms ease;
+    transition: color 400ms ease;
+    color: lime;
+    background-color: #ffffff00;
+}
+.badbutton{
+    background-color: #FF6000;
+    color:  #00000090;
+    border: #FF6000 2px solid;
+    border-radius: 5px;
+    width: 60%;
+    padding: 10px;
+    margin:5px auto;
+    font-weight: 400;
+}
+.badbutton:hover{
+    transition: background-color 400ms ease;
+    transition: color 400ms ease;
+    color: #FF6000;
+    border: #FF6000 2px solid;
+    background-color: #ffffff00;
+}
+::placeholder{
+	color: rgba(0, 255, 0, 0.500);
+}
+input, textarea, select{
+	background-color: rgba(0, 0, 0, 0.63); 
+	padding:3px;
+	border-left-style: none;
+	border:1px  rgba(0, 255, 0, 0.500) solid;
+	border-radius: 5px;
+	color: lime;
+    width: 100%;
+    margin: 10px 0;
+}
+.centered{
+    margin: 10px auto;
+}
+select{
+    text-align: center;
+}
+.textbox{
+    height: 40px;
+    max-width: 100%;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid lime;
+  -webkit-text-fill-color: lime;
+  -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+footer{
+    background-color:rgb(46, 46, 46);
+    width: 100%;
+    color: rgb(255, 255, 255);
+    padding: 2vw;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+/* Desktop Breakpoint */
+@media (min-width: 1000px){
+    body{
+        font-size: 100%;
+    }
+    nav{
+        flex-flow: row nowrap;
+        justify-content: space-between;
+    }
+    .navimg{
+        padding: 0;
+    }
+    .navimg i{
+        display: none;
+    }
+    .navbar-ul{
+        display: flex;
+        width: fit-content;
+        text-align: center;
+    }
+    .navbar-ul li{
+        min-width: 10%;
+        padding: 1vw 3vw;
+        border-radius: 0px 0px 5px 5px; 
+    }
+    .navimg img{
+        height:40px;
+        padding-left: 5px;
+    }
+    .rows{
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+    }
+    .rows .imgbox{
+        width: 30%;
+    }
+
+    .banner{
+        height: 18vw;
+    }
+    .content{
+        width: 90%;
+    }
+    form{
+        display: flex;
+        flex-flow: column nowrap;
+        width: 40%;
+    }
+    form button{
+        color: white;
+        background-color: #FF6000;
+        border: none;
+        border-radius: 5px;
+        width: 70%;
+        padding: 10px;
+    }
+    footer{
+        padding: .7vw;
+        align-items: flex-start;
+    }
+}

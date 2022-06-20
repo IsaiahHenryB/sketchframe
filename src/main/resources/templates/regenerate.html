@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700;900&display=swap" rel="stylesheet">
+    <script th:src="@{~/js/script.js}" defer></script>
+    <script src="https://kit.fontawesome.com/e6cba708a8.js" crossorigin="anonymous"></script>
+    <script th:src="@{~/js/p5.js}"></script>
+    <script th:src="@{/js/p5.sound.min.js}"></script>
+    <script sec:authorize="isAuthenticated()" th:src="@{~/js/sketch.js}" defer></script>
+    <script sec:authorize="!isAuthenticated()" th:src="@{~/js/demo.js}" defer></script>
+    <link rel="stylesheet" th:href="@{~/styles/main.css}">
+    <link rel="icon" th:href="@{~/img/sketchframe.ico}">
+    <title>SketchFrame: Create</title>
+</head>
+<body>
+    <header>
+        <div th:insert="fragments/nav :: nav"></div>
+        <div class="banner" th:style="'background-image:url(' + @{~/img/Background1.png} + '); background-repeat: no-repeat, repeat; background-size: cover;'">
+            <h1>CREATE<pre></pre>Generate Some Abstract Art</h1>
+        </div>
+    </header>
+    <div class="content">
+
+        <h1>Get Started</h1>
+        <div class="workspace">
+            <div class="controls">
+            <h3>Controls</h3>
+            <form id="params" action="">
+                <label for="lines">Show Outlines</label>
+                <select name="lines" required>
+                    <option selected th:value="${artwork.showOutlines}" th:text="${artwork.showOutlines}"></option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+
+                <label for="linewidth">Outline Width In px.</label>
+                <input type="number" min="0" step=".1" name="linewidth" th:value="${artwork.outlineWidth}" placeholder="At least 0" required>
+
+                <label for="linecolor">Outline Color</label>
+                <select name="linecolor" required>
+                    <option selected th:value="${artwork.outlineColor}" th:text="${artwork.outlineColor}"></option>
+                    <option value="On">On</option>
+                    <option value="Off">Off</option>
+                </select>
+
+                <label for="opacity">Stroke Opacity</label>
+                <input type="number" min="0" max="255" step=".1" name="opacity" placeholder="0-255" th:value="${artwork.opacity}" required>
+
+                <label for="minswidth">Min. Stroke Width</label>
+                <input type="number" min="0" step=".1" name="minswidth" placeholder="At least 0" th:value="${artwork.minStrokeWidth}" required>
+                
+                <label for="maxswidth">Max. Stroke Width</label>
+                <input type="number" min="0" step=".1" name="maxswidth" placeholder="Thin Strokes Increase Load" th:value="${artwork.maxStrokeWidth}" required>
+
+                <label for="rotation">Stroke Angle</label>
+                <input type="number" step=".1" name="rotation" placeholder="Try Any Number Here" th:value="${artwork.strokeAngle}" required>
+
+                <label for="layers">Layers</label>
+                <input type="number" min="1" step="1" name="layers" placeholder="High numbers cause load" th:value="${artwork.layers}" required>
+
+                <label for="strokefill">Stroke Color Fill</label>
+                <select name="strokefill" required>
+                    <option selected th:value="${artwork.colorFill}" th:text="${artwork.colorFill}"></option>
+                    <option value="On">On</option>
+                    <option value="Off">Off</option>
+                </select>
+
+                <label for="random">Color Selection</label>
+                <select name="random" required>
+                    <option selected th:value="${artwork.colorSelection}" th:text="${artwork.colorSelection}"></option>
+                    <option value="Palette Based">Palette Based</option>
+                    <option value="Totally Random">Totally Random</option>
+                </select>
+
+                <label for="palnum">Palette Number</label>
+                <input type="number" min="0"  max="675" step="1" name="palnum" placeholder="Choose 1-675 0 = Random" th:value="${artwork.palette}" required>
+
+                <button id="generator">Generate</button>
+        </form>  
+            <h3 class="orange">WARNING!<pre></pre>Be Patient</h3>
+            <p class="bad">Depending on which parameters you choose, load times can vary. Choosing parameters that generate too many strokes and lines can cause your browser to experience high load times and even crash in some cases depending on your hardware.</p>
+            </div>
+       <div>
+            <div id="myCanvas">
+            </div>
+            <p id="currentPalette"></p>
+       </div>
+        </div>
+        <div sec:authorize="isAuthenticated()" id="uploadform" >
+        <form id="upload" th:action="@{/create}" method="POST" th:object="${artwork}" class="centered vanish">
+            <h3>Upload This Canvas</h3>
+            <img id="preview" width="200px" >
+            <input class="hide" id="image" name="image" type="text" th:field="*{image}" required>
+            <input class="hide" id="parameters" name="params" type="text" th:field="*{params}" required>
+            <input type="hidden" id="showOutlines" th:field="*{showOutlines}">
+            <input type="hidden" id="outlineWidth" th:field="*{outlineWidth}">
+            <input type="hidden" id="outlineColor" th:field="*{outlineColor}">
+            <input type="hidden" id="opacity" th:field="*{opacity}">
+            <input type="hidden" id="minStrokeWidth" th:field="*{minStrokeWidth}">
+            <input type="hidden" id="maxStrokeWidth" th:field="*{maxStrokeWidth}">
+            <input type="hidden" id="strokeAngle" th:field="*{strokeAngle}">
+            <input type="hidden" id="layers" th:field="*{layers}">
+            <input type="hidden" id="colorFill" th:field="*{colorFill}">
+            <input type="hidden" id="colorSelection" th:field="*{colorSelection}">
+            <input type="hidden" id="palette" th:field="*{palette}">
+            <input class="hide" id="username" type="text" name="username" th:value="${#authentication.name}" readonly required>
+            <br>
+            <label for="Title">Title</label>
+            <input type="text" id="title" th:field="*{title}" placeholder="Title" required>
+            <label for="isAccessible">Public</label>
+            <select class="form-control" th:field="*{isAccessible}" required>
+                <option th:value="1" >Yes</option>
+                <option th:value="0" >No</option>
+            </select>
+            <button>Upload</button>
+        </form>
+        <p id="message" class="good">Hey <span sec:authentication="principal.username"></span>. Generate an image and a form will appear that will allow you to upload it!</p>
+        </div>
+        <p sec:authorize="!isAuthenticated()">If You Want To Upload Your Canvas <a href="/login">Please Log In</a>!</p>
+    </div>
+    <footer>
+        <p>&copy SketchFrame 2022</p>
+    </footer>
+</body>
+</html>
