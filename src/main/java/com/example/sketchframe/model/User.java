@@ -33,7 +33,17 @@ public class User {
 					)
 			)
 	private Collection<Role> roles;
-
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinTable(
+			name = "users_artwork",
+			joinColumns = @JoinColumn(
+					name = "user_id",referencedColumnName = "id"
+			),
+			inverseJoinColumns = @JoinColumn(
+					name = "art_id", referencedColumnName = "id"
+			)
+	)
+	private Collection<Artwork> artwork;
 	public User() {
 
 	}
