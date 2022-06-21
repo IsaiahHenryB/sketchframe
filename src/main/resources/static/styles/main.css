@@ -211,6 +211,20 @@ p a:hover{
     transition: border 400ms ease;
     border: 3px solid #FF6000;
 }
+.vidcontainer{
+    position: relative;
+    width: 100%;
+    padding-bottom:56.25%;
+    margin:12px 0;
+}
+iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
 .display img{
     width: 80%;
     margin-bottom: 40px;
