@@ -73,7 +73,16 @@ public class SiteController implements ErrorController{
 	public String regenerateUserArt(
 			@PathVariable(value = "id") Long id,
 			Model model){
-		model.addAttribute("artwork", artworkService.getArtById(id));
+		model.addAttribute("artwork", artworkService.getAccessibleArtById(id));
+		return "regenerate";
+	}
+	@PreAuthorize("#username == principal.username")
+	@GetMapping("/remake/{id}/{username}")
+	public String regeneratePrivateUserArt(
+			@PathVariable(value = "id") Long id,
+			@PathVariable(value = "username") String username,
+			Model model){
+		model.addAttribute("artwork", artworkService.getArtWithIdAndUsername(id,username));
 		return "regenerate";
 	}
 //	The post mapping used to overwrite the artwork in the database
@@ -117,7 +126,7 @@ public class SiteController implements ErrorController{
 								@PathVariable(value = "username") String username,
 								  Model model){
 		model.addAttribute("artwork", artworkService.getArtWithIdAndUsername(id,username));
-		return "painting";
+		return "mypainting";
 	}
 //	View that allows only corresponding user to delete their artwork from the database
 	@PreAuthorize("#username == principal.username")

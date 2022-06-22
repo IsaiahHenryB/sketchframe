@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{~/styles/main.css}">
+    <script th:src="@{~/js/script.js}" defer></script>
+    <script th:src="@{~/js/details.js}" defer></script>
+    <script src="https://kit.fontawesome.com/e6cba708a8.js" crossorigin="anonymous"></script>
+    <link rel="icon" th:href="@{~/img/sketchframe.ico}">
+    <title>SketchFrame: View Artwork</title>
+</head>
+<body>
+    <header>
+        <div th:insert="fragments/nav :: nav"></div>
+    </header>
+    <div class="content">
+        <div class="display">
+            <h1 th:text="${artwork.title}">Painting</h1>
+            <h2>By: <span th:text="${artwork.username}"></span></h2>
+                <img th:src="${artwork.image}" alt="">
+            <a th:href="${artwork.image}" th:download="${artwork.title}+' By '+${artwork.username}"><button>Download</button></a>
+            <button id="showdetails">Show The Parameters</button>
+            <div class="onlytext disappear" id="details">
+                <p th:text="${artwork.params}"></p>
+                <a th:href="@{'/remake/'+${artwork.id}+'/'+${artwork.username}}"><button>Create New From Parameters</button></a>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy SketchFrame 2022</p>
+    </footer>
+</body>
+</html>

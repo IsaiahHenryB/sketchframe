@@ -38,7 +38,7 @@ let palette;
 let palettenum = 0;
 let currentcanvas;
 function preload() {
-  table = loadTable("../palettes/colors.csv", "csv", "header");
+  table = loadTable("../../palettes/colors.csv", "csv", "header");
 }
 
 function regen(e){
