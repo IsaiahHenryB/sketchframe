@@ -1,4 +1,4 @@
-package com.example.sketchframe;
+package com.isaiah.sketchframe;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

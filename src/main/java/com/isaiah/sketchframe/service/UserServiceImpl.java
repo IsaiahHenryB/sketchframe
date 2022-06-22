@@ -1,9 +1,9 @@
-package com.example.sketchframe.service;
+package com.isaiah.sketchframe.service;
 
-import com.example.sketchframe.model.Role;
-import com.example.sketchframe.model.User;
-import com.example.sketchframe.repository.UserRepository;
-import com.example.sketchframe.web.dto.UserRegistrationDto;
+import com.isaiah.sketchframe.model.Role;
+import com.isaiah.sketchframe.model.User;
+import com.isaiah.sketchframe.repository.UserRepository;
+import com.isaiah.sketchframe.web.dto.UserRegistrationDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

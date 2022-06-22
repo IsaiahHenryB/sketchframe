@@ -1,8 +1,7 @@
-package com.example.sketchframe.repository;
+package com.isaiah.sketchframe.repository;
 
-import com.example.sketchframe.model.User;
+import com.isaiah.sketchframe.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository

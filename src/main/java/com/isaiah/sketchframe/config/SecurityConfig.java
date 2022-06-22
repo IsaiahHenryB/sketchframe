@@ -1,6 +1,6 @@
-package com.example.sketchframe.config;
+package com.isaiah.sketchframe.config;
 
-import com.example.sketchframe.service.UserService;
+import com.isaiah.sketchframe.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

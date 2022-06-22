@@ -1,6 +1,4 @@
-package com.example.sketchframe.model;
-
-import org.hibernate.engine.internal.Cascade;
+package com.isaiah.sketchframe.model;
 
 import javax.persistence.*;
 import java.util.Collection;

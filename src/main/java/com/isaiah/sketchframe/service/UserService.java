@@ -1,7 +1,7 @@
-package com.example.sketchframe.service;
+package com.isaiah.sketchframe.service;
 
-import com.example.sketchframe.model.User;
-import com.example.sketchframe.web.dto.UserRegistrationDto;
+import com.isaiah.sketchframe.model.User;
+import com.isaiah.sketchframe.web.dto.UserRegistrationDto;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 public interface UserService extends UserDetailsService{

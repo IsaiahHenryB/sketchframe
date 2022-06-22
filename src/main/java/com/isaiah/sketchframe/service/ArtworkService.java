@@ -1,6 +1,6 @@
-package com.example.sketchframe.service;
+package com.isaiah.sketchframe.service;
 
-import com.example.sketchframe.model.Artwork;
+import com.isaiah.sketchframe.model.Artwork;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

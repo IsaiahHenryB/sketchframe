@@ -1,4 +1,4 @@
-package com.example.sketchframe.model;
+package com.isaiah.sketchframe.model;
 
 import javax.persistence.*;
 

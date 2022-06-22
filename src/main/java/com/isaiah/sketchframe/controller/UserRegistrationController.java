@@ -1,10 +1,9 @@
-package com.example.sketchframe.controller;
+package com.isaiah.sketchframe.controller;
 
-import com.example.sketchframe.service.UserService;
-import com.example.sketchframe.web.dto.UserRegistrationDto;
+import com.isaiah.sketchframe.service.UserService;
+import com.isaiah.sketchframe.web.dto.UserRegistrationDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;

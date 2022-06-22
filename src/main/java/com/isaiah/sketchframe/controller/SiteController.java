@@ -1,8 +1,8 @@
-package com.example.sketchframe.controller;
+package com.isaiah.sketchframe.controller;
 
-import com.example.sketchframe.model.Artwork;
-import com.example.sketchframe.service.ArtworkService;
-import com.example.sketchframe.service.UserService;
+import com.isaiah.sketchframe.model.Artwork;
+import com.isaiah.sketchframe.service.ArtworkService;
+import com.isaiah.sketchframe.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -11,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Collection;
 
 @Controller
 public class SiteController implements ErrorController{
