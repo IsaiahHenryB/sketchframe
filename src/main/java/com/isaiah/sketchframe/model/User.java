@@ -31,6 +31,7 @@ public class User {
 					)
 			)
 	private Collection<Role> roles;
+	//	Creates relationship between users and their artwork (yet to be implemented as a feature)
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinTable(
 			name = "users_artwork",

@@ -17,7 +17,7 @@ import java.util.Optional;
 //@RunWith(SpringRunner.class)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class SketchframeJunitTests {
+public class SketchFrameRepoTests {
     @Autowired
     ArtworkRepository artworkRepository;
     @Autowired
@@ -36,7 +36,7 @@ public class SketchframeJunitTests {
     }
     @Test
     public void testFindArtByid(){
-        Optional<Artwork> artwork = artworkRepository.findById(Long.valueOf(3));
+        Optional<Artwork> artwork = artworkRepository.findById(Long.valueOf(2));
         assertThat(artwork).isPresent();
     }
     @Test
@@ -53,7 +53,7 @@ public class SketchframeJunitTests {
     @Test
     public void testFindArtWithIdAndUsername(){
         String username = "Isaiah";
-        Artwork artwork = artworkRepository.findArtWithIdAndUsername(Long.valueOf(3), username);
+        Artwork artwork = artworkRepository.findArtWithIdAndUsername(Long.valueOf(2), username);
         assertThat(artwork).isNotNull();
     }
 }
