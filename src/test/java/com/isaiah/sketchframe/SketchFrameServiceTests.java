@@ -9,6 +9,9 @@ import com.isaiah.sketchframe.service.UserServiceImpl;
 import com.isaiah.sketchframe.web.dto.UserRegistrationDto;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mockito;
@@ -24,6 +27,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
@@ -62,9 +66,10 @@ public class SketchFrameServiceTests {
         assertTrue(result);
     }
 //    Tests getArtWithUsernameAndId method in the ArtworkService Class
-    @Test
-//    Should Pass
-    public void testGetArtWithIdAndUsername(){
+    @ParameterizedTest
+    @CsvSource({"1,Isaiah", "77,username"})
+//    Should Pass then Fail
+    public void testGetArtWithIdAndUsernamePassThenFail(Long arg1, String arg2){
         Long id = 1L;
         String username = "Isaiah";
         Artwork artwork = new Artwork();
@@ -72,6 +77,7 @@ public class SketchFrameServiceTests {
         artwork.setUsername(username);
         Mockito.when(artworkRepository.findArtWithIdAndUsername(id, username)).thenReturn(artwork);
         Artwork thisArt = artworkServiceImpl.getArtWithIdAndUsername(id, username);
-        assertThat(thisArt).isNotNull();
+        assertEquals(thisArt.getId(),arg1);
+        assertEquals(thisArt.getUsername(),arg2);
     }
 }
