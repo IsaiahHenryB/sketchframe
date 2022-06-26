@@ -1,5 +1,5 @@
 package com.isaiah.sketchframe.web.dto;
-//This class was made strictly to allow encryption of the password because BcryptPasswordEncoder needs access to the value while user is being saved
+//This class was made strictly to create a data transfer object that allows encryption of the password because BcryptPasswordEncoder needs access to the password value while user is being saved
 public class UserRegistrationDto {
 	private String firstname;
 	private String lastname;

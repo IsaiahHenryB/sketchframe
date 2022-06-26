@@ -25,7 +25,7 @@ public class SiteController implements ErrorController{
 
 		@Autowired
 		private HttpServletRequest request;
-//		Adding slf4j Transaction Logging
+//		Adding slf4j Custom Transaction Logging
 		Logger logger = LoggerFactory.getLogger(SiteController.class);
 //		A bunch of generic mapping to various views
 		@RequestMapping("/about")
