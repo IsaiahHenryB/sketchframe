@@ -27,7 +27,7 @@ public class SiteController implements ErrorController{
 		private HttpServletRequest request;
 //		Adding slf4j Transaction Logging
 		Logger logger = LoggerFactory.getLogger(SiteController.class);
-//	A bunch of generic mapping to various views
+//		A bunch of generic mapping to various views
 		@RequestMapping("/about")
 		public String showAboutPage() {
 			logger.trace("User has accessed the about page");

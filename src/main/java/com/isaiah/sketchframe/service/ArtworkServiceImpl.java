@@ -1,6 +1,7 @@
 package com.isaiah.sketchframe.service;
 
 import com.isaiah.sketchframe.model.Artwork;
+import com.isaiah.sketchframe.model.User;
 import com.isaiah.sketchframe.repository.ArtworkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +11,7 @@ import java.util.Optional;
 
 @Service
 	public class ArtworkServiceImpl implements ArtworkService{
-		
+//	Implementing methods from ArtworkService interface
 		@Autowired
 		private ArtworkRepository artRepository;
 		

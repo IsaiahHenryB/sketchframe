@@ -34,7 +34,7 @@ public class UserRegistrationController {
 	public String showRegistrationForm() {
 		return "register";
 	}
-//	Allows user ot save their registration info to the database
+//	Allows user ot save their registration info to the database (Has Exception Handling)
 	@PostMapping
 	public String registerUserAccount(@ModelAttribute("user") UserRegistrationDto registrationDto) throws Exception{
 //	Exception handling for failed  user registration

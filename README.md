@@ -20,7 +20,7 @@ As an Admin I want to have access to all artwork So I can appropriately manage e
 
 As a Member I want to update the actual image So I can have more control of what is updated.
 
-As a visitor I want to save my canvas So I can upload it when I become authenticated.
+As a visitor I want to save my demo canvas So I can upload it when I become authenticated.
 
 ###Challenges
 Challenge: I wanted users to be able to create "similar to existing" artwork from the art generator.

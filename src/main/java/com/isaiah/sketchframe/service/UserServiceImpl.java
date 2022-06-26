@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService{
-	
+//	Implementing functionality for UserService interface
 	private UserRepository userRepository;
 	
 	@Autowired
@@ -39,7 +39,18 @@ public class UserServiceImpl implements UserService{
 				Arrays.asList(new Role("ROLE_USER")));
 		return userRepository.save(user);
 	}
-//This queries the database for users with corresponding username field(not case-sensitive)
+
+	@Override
+	public boolean doesUsernameExist(String username) {
+		boolean userExists = false;
+		User user = userRepository.findByUsername(username);
+		if(user.getUsername() == username){
+			userExists = true;
+		}
+		return userExists;
+	}
+
+	//This queries the database for users with corresponding username field(not case-sensitive)
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		User user = userRepository.findByUsername(username);
@@ -51,4 +62,5 @@ public class UserServiceImpl implements UserService{
 	private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles){
 		return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
 	};
+
 }
