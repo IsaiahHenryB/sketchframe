@@ -20,27 +20,27 @@ public class Artwork {
 	@Column(name = "parameters", nullable=false)
 	private String params;
 //	For saving the parameters used to create the artwork
-	@Column
+	@Column(nullable = false)
 	private String showOutlines;
-	@Column
+	@Column(nullable = false)
 	private String outlineWidth;
-	@Column
+	@Column(nullable = false)
 	private String outlineColor;
-	@Column
+	@Column(nullable = false)
 	private String opacity;
-	@Column
+	@Column(nullable = false)
 	private String minStrokeWidth;
-	@Column
+	@Column(nullable = false)
 	private String maxStrokeWidth;
-	@Column
+	@Column(nullable = false)
 	private String strokeAngle;
-	@Column
+	@Column(nullable = false)
 	private String layers;
-	@Column
+	@Column(nullable = false)
 	private String colorFill;
-	@Column
+	@Column(nullable = false)
 	private String colorSelection;
-	@Column
+	@Column(nullable = false)
 	private String palette;
 
 	public Artwork(){}
