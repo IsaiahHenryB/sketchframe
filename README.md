@@ -38,7 +38,7 @@ Challenge: I wanted users to be able to create "similar to existing" artwork fro
 Solution: I added the parameters used to make the art in the art generator to the artwork entity model. That way, the
 parameters could be accessed by the art generator if needed.
 
-Challenge: I wanted to be sure that only the authenticated user can use CRUD operations on their artwork.
+Challenge: I wanted to be sure that only the authenticated user can use create, update and delete operations on their artwork.
 
-Solution: I added @PreAuthorize to the necessary mappings in order tho ensure that CRUD operations could only be done if
-the user's credentials matched the data being accessed.
+Solution: I added @PreAuthorize to the necessary mappings in order tho ensure that create, update and delete operations could only be done if
+the user's credentials matched the ones in the artwork data being accessed.
