@@ -31,6 +31,7 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter{
 		auth.setPasswordEncoder(passwordEncoder());
 		return auth;
 	}
+//	Makes it possible for potential users to be authenticated
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.authenticationProvider(authenticationProvider());

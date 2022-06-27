@@ -31,14 +31,14 @@ public class User {
 					)
 			)
 	private Collection<Role> roles;
-	//	Creates relationship between users and their artwork (yet to be implemented as a feature)
+	//	Creates relationship between users and their artwork
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn( name = "user_id", referencedColumnName = "id")
 	private Collection<Artwork> artwork;
 	public User() {
 
 	}
-
+//	Constructor used to register/log in users (Referenced in the UserRegistrationDto class in the web.dto package)
 	public User(String firstname, String lastname, String email, String password, String username,
 			Collection<Role> roles) {
 		super();

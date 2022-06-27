@@ -19,7 +19,8 @@ public class Artwork {
 	private String username;
 	@Column(name = "parameters", nullable=false)
 	private String params;
-//	For saving the parameters used to create the artwork
+
+//	These fields are all for saving the parameters that the user used to create the artwork
 	@Column(nullable = false)
 	private String showOutlines;
 	@Column(nullable = false)

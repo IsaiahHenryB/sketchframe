@@ -5,8 +5,8 @@ import com.isaiah.sketchframe.model.User;
 import com.isaiah.sketchframe.repository.UserRepository;
 import com.isaiah.sketchframe.service.ArtworkService;
 import com.isaiah.sketchframe.service.UserService;
-import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -96,7 +96,7 @@ public class SiteController implements ErrorController{
 		logger.trace("User has accessed the regenerate page");
 		return "regenerate";
 	}
-//	(READ)
+//	(READ) Takes data from private artwork and displays it into the art generator
 	@PreAuthorize("#username == principal.username")
 	@GetMapping("/remake/{id}/{username}")
 	public String regeneratePrivateUserArt(

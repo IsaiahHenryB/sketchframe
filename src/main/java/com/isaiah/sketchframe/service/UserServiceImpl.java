@@ -39,13 +39,15 @@ public class UserServiceImpl implements UserService{
 				Arrays.asList(new Role("ROLE_USER")));
 		return userRepository.save(user);
 	}
-
+//	Sends true or false depending on whether user with username is found in the database or not
 	@Override
 	public boolean doesUsernameExist(String username) {
 		boolean userExists = false;
 		User user = userRepository.findByUsername(username);
-		if(user.getUsername() == username){
+		if (user != null) {
 			userExists = true;
+		} else {
+			userExists = false;
 		}
 		return userExists;
 	}

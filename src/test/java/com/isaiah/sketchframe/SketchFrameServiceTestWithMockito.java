@@ -1,12 +1,9 @@
 package com.isaiah.sketchframe;
 
 import com.isaiah.sketchframe.model.Artwork;
-import com.isaiah.sketchframe.model.User;
 import com.isaiah.sketchframe.repository.ArtworkRepository;
-import com.isaiah.sketchframe.repository.UserRepository;
 import com.isaiah.sketchframe.service.ArtworkServiceImpl;
 import com.isaiah.sketchframe.service.UserServiceImpl;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -16,45 +13,20 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 //Testing a few methods from my service classes
 @ExtendWith(MockitoExtension.class)
 @ExtendWith(SpringExtension.class)
-public class SketchFrameServiceTestsWithMockito {
-    @MockBean
-    UserRepository userRepository;
+public class SketchFrameServiceTestWithMockito {
     @MockBean
     ArtworkRepository artworkRepository;
     @InjectMocks
     UserServiceImpl userServiceImpl;
     @InjectMocks
     ArtworkServiceImpl artworkServiceImpl;
-
-//  Tests doesUsernameExist method in the UserService Class
-    @Test
-//    Should Pass
-    public void testDoesUsernameExist(){
-        String username = "Isaiah";
-        User user = new User();
-        user.setUsername(username);
-        Mockito.when(userRepository.findByUsername(username)).thenReturn(user);
-        boolean result = userServiceImpl.doesUsernameExist(username);
-        assertTrue(result);
-    }
-    @Test
-//    Should Fail
-    public void testDoesUsernameExistFail(){
-        String username = "Isaiah";
-        User user = new User();
-        user.setUsername("username");
-        Mockito.when(userRepository.findByUsername(username)).thenReturn(user);
-        boolean result = userServiceImpl.doesUsernameExist(username);
-        assertTrue(result);
-    }
+//  An attempt at testing using mockito
 //    Tests getArtWithUsernameAndId method in the ArtworkService Class
     @ParameterizedTest
     @CsvSource({"1,Isaiah", "77,username"})
