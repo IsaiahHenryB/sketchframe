@@ -15,25 +15,26 @@
     <title>SketchFrame: Community Gallery</title>
 </head>
 <body>
-    <header>
-        <div th:insert="fragments/nav :: nav"></div>
-        <div class="banner" th:style="'background-image:url(' + @{~/img/Background1.png} + '); background-repeat: no-repeat, repeat; background-size: cover;'">
-            <h1>COMMUNITY GALLERY</h1>
-        </div>
-    </header>
-    <div class="content">
-        <div class="rows">
-            <div class="imgbox" th:each="artwork: ${Artlist}">
-                <a th:href="@{'/view/'+${artwork.id}}">
-                    <img th:src="${artwork.image}" alt="">
-                </a>
-                <h3 th:text="${artwork.title}">Title</h3>
-                <h4>By <span th:text="${artwork.username}"></span></h4>
-            </div>
+<header>
+    <div th:insert="fragments/nav :: nav"></div>
+    <div class="banner"
+         th:style="'background-image:url(' + @{~/img/Background1.png} + '); background-repeat: no-repeat, repeat; background-size: cover;'">
+        <h1>COMMUNITY GALLERY</h1>
+    </div>
+</header>
+<div class="content">
+    <div class="rows">
+        <div class="imgbox" th:each="artwork: ${Artlist}">
+            <a th:href="@{'/view/'+${artwork.id}}">
+                <img th:src="${artwork.image}" alt="">
+            </a>
+            <h3 th:text="${artwork.title}">Title</h3>
+            <h4>By <span th:text="${artwork.username}"></span></h4>
         </div>
     </div>
-    <footer>
-        <p>&copy SketchFrame 2022</p>
-    </footer>
+</div>
+<footer>
+    <p>&copy SketchFrame 2022</p>
+</footer>
 </body>
 </html>

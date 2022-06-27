@@ -2,20 +2,37 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <body>
-    <nav th:fragment="nav">
-            <div class="navimg">
-                <a href="/"><img th:src="@{~/img/applogo.png}" alt="Isaiah's music"></a>
-                <i id="dropdown" class="fa-solid fa-arrow-down"></i>
-            </div>
-            <ul id="links" class="navbar-ul">
-                <a href="/"><li>HOME</li></a>
-                <a href="/community"><li class="little">COMMUNITY<pre></pre>GALLERY</li></a>
-                <a href="/create"><li>CREATE</li></a>
-                <a class="little" sec:authorize="isAuthenticated()"   th:href="@{'/creations/'+${#authentication.name}}"><li>YOUR CREATIONS</li></a>
-                <a href="/about"><li>ABOUT</li></a>
-                <a sec:authorize="!isAuthenticated()" href="/login"><li>LOGIN</li></a>
-                <a sec:authorize="isAuthenticated()" href="/logout"><li>LOGOUT</li></a>
-            </ul>
-        </nav>
+<nav th:fragment="nav">
+    <div class="navimg">
+        <a href="/"><img th:src="@{~/img/applogo.png}" alt="Isaiah's music"></a>
+        <i id="dropdown" class="fa-solid fa-arrow-down"></i>
+    </div>
+    <ul id="links" class="navbar-ul">
+        <a href="/">
+            <li>HOME</li>
+        </a>
+        <a href="/community">
+            <li class="little">COMMUNITY
+                <pre></pre>
+                GALLERY
+            </li>
+        </a>
+        <a href="/create">
+            <li>CREATE</li>
+        </a>
+        <a class="little" sec:authorize="isAuthenticated()" th:href="@{'/creations/'+${#authentication.name}}">
+            <li>YOUR CREATIONS</li>
+        </a>
+        <a href="/about">
+            <li>ABOUT</li>
+        </a>
+        <a sec:authorize="!isAuthenticated()" href="/login">
+            <li>LOGIN</li>
+        </a>
+        <a sec:authorize="isAuthenticated()" href="/logout">
+            <li>LOGOUT</li>
+        </a>
+    </ul>
+</nav>
 </body>
 </html>

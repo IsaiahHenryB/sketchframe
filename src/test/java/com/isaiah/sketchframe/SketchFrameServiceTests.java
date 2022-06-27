@@ -27,17 +27,19 @@ public class SketchFrameServiceTests {
     UserService userService;
     @Autowired
     ArtworkService artworkService;
-//  Start of UserService Tests
+
+    //  Start of UserService Tests
     @Test
-    public void testLoadUserByUsername(){
+    public void testLoadUserByUsername() {
         String username = "Isaiah";
         UserDetails user = userService.loadUserByUsername(username);
         assertThat(user).isNotNull();
     }
-//  This test is set to pass, then fail
+
+    //  This test is set to pass, then fail
     @ParameterizedTest
-    @ValueSource(strings = {"Isaiah","Username"})
-    public void testDoesUsernameExist(String arg){
+    @ValueSource(strings = {"Isaiah", "Username"})
+    public void testDoesUsernameExist(String arg) {
         Boolean result = userService.doesUsernameExist(arg);
         assertTrue(result);
     }
@@ -45,30 +47,34 @@ public class SketchFrameServiceTests {
 //  Start of ArtworkService Tests
 
     @Test
-    public void testGetArtById(){
+    public void testGetArtById() {
         Artwork artwork = artworkService.getArtById(2L);
         assertThat(artwork).isNotNull();
     }
+
     @Test
-    public void testGetArtByUsername(){
+    public void testGetArtByUsername() {
         String username = "Isaiah";
         List<Artwork> artwork = artworkService.getArtByUsername(username);
         assertFalse(artwork.isEmpty());
     }
-//    Parameterized test for getArtByUsername that will pass then fail
+
+    //    Parameterized test for getArtByUsername that will pass then fail
     @ParameterizedTest
-    @ValueSource(strings = {"Isaiah","Username"})
-    public void testGetArtByUsernamePassThenFail(String arg){
+    @ValueSource(strings = {"Isaiah", "Username"})
+    public void testGetArtByUsernamePassThenFail(String arg) {
         List<Artwork> artwork = artworkService.getArtByUsername(arg);
         assertFalse(artwork.isEmpty());
     }
+
     @Test
-    public void testGetArtByIsAccessible(){
+    public void testGetArtByIsAccessible() {
         List<Artwork> artwork = artworkService.getAccessible();
         assertFalse(artwork.isEmpty());
     }
+
     @Test
-    public void testFindArtWithIdAndUsername(){
+    public void testFindArtWithIdAndUsername() {
         String username = "Isaiah";
         Artwork artwork = artworkService.getArtWithIdAndUsername(2L, username);
         assertThat(artwork).isNotNull();

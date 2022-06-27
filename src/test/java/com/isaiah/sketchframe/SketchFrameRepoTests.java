@@ -32,8 +32,7 @@ public class SketchFrameRepoTests {
     private TestEntityManager entityManager;
 
     @Test
-    public void testCreateUser()
-    {
+    public void testCreateUser() {
         User user = new User();
         user.setEmail("user@user.com");
         user.setPassword("password");
@@ -49,28 +48,29 @@ public class SketchFrameRepoTests {
     }
 
     @Test
-    public void testFindUserById(){
+    public void testFindUserById() {
         Long id = 1L;
         Optional<User> user = userRepository.findById(id);
         assertThat(user).isPresent();
     }
+
     //    Parameterized test for findById that will pass then fail
     @ParameterizedTest
-    @ValueSource(longs = {1L,1000L})
-    public void testFindUserByIdPassThenFail(Long arg){
+    @ValueSource(longs = {1L, 1000L})
+    public void testFindUserByIdPassThenFail(Long arg) {
         Optional<User> user = userRepository.findById(arg);
         assertThat(user).isPresent();
     }
 
     @Test
-    public void testFindUserByUsername(){
+    public void testFindUserByUsername() {
         String username = "Isaiah";
         User user = userRepository.findByUsername(username);
         assertThat(user).isNotNull();
     }
+
     @Test
-    public void testCreateArtwork()
-    {
+    public void testCreateArtwork() {
         Artwork artwork = new Artwork();
         artwork.setParams("Many Things");
         artwork.setTitle("artwork");
@@ -96,31 +96,36 @@ public class SketchFrameRepoTests {
 
         assertThat(existArtwork.getId()).isEqualTo(artwork.getId());
     }
+
     @Test
-    public void testFindArtById(){
+    public void testFindArtById() {
         Optional<Artwork> artwork = artworkRepository.findById(2L);
         assertThat(artwork).isPresent();
     }
+
     @Test
-    public void testFindArtByUsername(){
+    public void testFindArtByUsername() {
         String username = "Isaiah";
         List<Artwork> artwork = artworkRepository.findArtByUsername(username);
         assertFalse(artwork.isEmpty());
     }
-//    Parameterized test for findArtByUsername that will pass then fail
+
+    //    Parameterized test for findArtByUsername that will pass then fail
     @ParameterizedTest
-    @ValueSource(strings = {"Isaiah","Username"})
-    public void testFindArtByUsernamePassThenFail(String arg){
+    @ValueSource(strings = {"Isaiah", "Username"})
+    public void testFindArtByUsernamePassThenFail(String arg) {
         List<Artwork> artwork = artworkRepository.findArtByUsername(arg);
         assertFalse(artwork.isEmpty());
     }
+
     @Test
-    public void testFindArtByIsAccessible(){
+    public void testFindArtByIsAccessible() {
         List<Artwork> artwork = artworkRepository.findAllAccessible();
         assertFalse(artwork.isEmpty());
     }
+
     @Test
-    public void testFindArtWithIdAndUsername(){
+    public void testFindArtWithIdAndUsername() {
         String username = "Isaiah";
         Artwork artwork = artworkRepository.findArtWithIdAndUsername(2L, username);
         assertThat(artwork).isNotNull();

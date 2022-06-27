@@ -26,12 +26,13 @@ public class SketchFrameServiceTestWithMockito {
     UserServiceImpl userServiceImpl;
     @InjectMocks
     ArtworkServiceImpl artworkServiceImpl;
-//  An attempt at testing using mockito
+
+    //  An attempt at testing using mockito
 //    Tests getArtWithUsernameAndId method in the ArtworkService Class
     @ParameterizedTest
     @CsvSource({"1,Isaiah", "77,username"})
 //    Should Pass then Fail
-    public void testGetArtWithIdAndUsernamePassThenFail(Long arg1, String arg2){
+    public void testGetArtWithIdAndUsernamePassThenFail(Long arg1, String arg2) {
         Long id = 1L;
         String username = "Isaiah";
         Artwork artwork = new Artwork();
@@ -39,7 +40,7 @@ public class SketchFrameServiceTestWithMockito {
         artwork.setUsername(username);
         Mockito.when(artworkRepository.findArtWithIdAndUsername(id, username)).thenReturn(artwork);
         Artwork thisArt = artworkServiceImpl.getArtWithIdAndUsername(id, username);
-        assertEquals(thisArt.getId(),arg1);
-        assertEquals(thisArt.getUsername(),arg2);
+        assertEquals(thisArt.getId(), arg1);
+        assertEquals(thisArt.getUsername(), arg2);
     }
 }

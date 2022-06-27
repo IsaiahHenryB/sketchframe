@@ -15,31 +15,33 @@
     <title>SketchFrame: Login</title>
 </head>
 <body>
-    <header>
-        <div th:insert="fragments/nav :: nav"></div>
-        <div class="banner" th:style="'background-image:url(' + @{~/img/Background3.png} + '); background-repeat: no-repeat, repeat; background-size: cover;'">
-            <h1>LOGIN</h1>
-        </div>
-    </header>
-    <div class="content">
-        <form id="message" th:action="@{/login}" method="post">
-            <h3>Log In</h3>
-            <!-- Adding regex validation for the name field to restrict numbers and silly characters but allowing hyphenated names -->
-            <label for="name">Username</label>
-            <input type="text" placeholder="Type Your Username Here" name="username" required>
-            <!-- Regex validation pattern for submitting the correct email format -->
-            <label for="password">Password</label>
-            <input type="password" name="password" placeholder="Type Your Password Here" required>
-            <button type="submit">Log In</button>
-            <div th:if="${param.error}"><h3 class="bad">Invalid Credentials Please Select a Different Username Or Password.</h3></div>
-            <div th:if="${param.register}"><h3 class="good">You Have Been Sucessfully Registered!</h3></div>
-            <div th:if="${param.logout}"><h3 class="good">You Have Been Logged Out.</h3></div>
-            <p>New around here?  <a href="/register" >Register Here!</a></p>
-        </form>
-        <h4></h4>
+<header>
+    <div th:insert="fragments/nav :: nav"></div>
+    <div class="banner"
+         th:style="'background-image:url(' + @{~/img/Background3.png} + '); background-repeat: no-repeat, repeat; background-size: cover;'">
+        <h1>LOGIN</h1>
     </div>
-    <footer>
-        <p>&copy SketchFrame 2022</p>
-    </footer>
+</header>
+<div class="content">
+    <form id="message" th:action="@{/login}" method="post">
+        <h3>Log In</h3>
+        <!-- Adding regex validation for the name field to restrict numbers and silly characters but allowing hyphenated names -->
+        <label for="name">Username</label>
+        <input type="text" placeholder="Type Your Username Here" name="username" required>
+        <!-- Regex validation pattern for submitting the correct email format -->
+        <label for="password">Password</label>
+        <input type="password" name="password" placeholder="Type Your Password Here" required>
+        <button type="submit">Log In</button>
+        <div th:if="${param.error}"><h3 class="bad">Invalid Credentials Please Select a Different Username Or
+            Password.</h3></div>
+        <div th:if="${param.register}"><h3 class="good">You Have Been Sucessfully Registered!</h3></div>
+        <div th:if="${param.logout}"><h3 class="good">You Have Been Logged Out.</h3></div>
+        <p>New around here? <a href="/register">Register Here!</a></p>
+    </form>
+    <h4></h4>
+</div>
+<footer>
+    <p>&copy SketchFrame 2022</p>
+</footer>
 </body>
 </html>

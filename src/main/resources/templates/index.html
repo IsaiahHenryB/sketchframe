@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="www.thymeleaf.org"
-xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,32 +15,52 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
     <title>SketchFrame</title>
 </head>
 <body>
-    <header>
-        <div th:insert="fragments/nav :: nav"></div>
-        <div class="banner" th:style="'background-image:url(' + @{~/img/Background2.png} + '); background-repeat: no-repeat, repeat; background-size: cover;'">
-            <h1>HOME<pre></pre>Welcome to SketchFrame</h1>
-            
-        </div>
-    </header>
-    <div class="content">
-        <div class="onlytext">
-        <h1>Welcome To SketchFrame <span sec:authorize="isAuthenticated()" sec:authentication="principal.username"></span></h1>
-            <div class="vidcontainer"><iframe src="https://www.youtube.com/embed/2EVvOl5afhw?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<header>
+    <div th:insert="fragments/nav :: nav"></div>
+    <div class="banner"
+         th:style="'background-image:url(' + @{~/img/Background2.png} + '); background-repeat: no-repeat, repeat; background-size: cover;'">
+        <h1>HOME
+            <pre></pre>
+            Welcome to SketchFrame
+        </h1>
 
-        <p>If you're interested in AI and art, this is the place for you!<pre></pre>SketchFrame is a platform where you can use AI to generate abstract art from simple shapes. There are virtually endless possibilities of generated you can create because every output is different from the last!</p>
+    </div>
+</header>
+<div class="content">
+    <div class="onlytext">
+        <h1>Welcome To SketchFrame <span sec:authorize="isAuthenticated()"
+                                         sec:authentication="principal.username"></span></h1>
+        <div class="vidcontainer">
+            <iframe src="https://www.youtube.com/embed/2EVvOl5afhw?rel=0" title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+        </div>
+
+        <p>If you're interested in AI and art, this is the place for you!
+        <pre></pre>
+        SketchFrame is a platform where you can use AI to generate abstract art from simple shapes. There are virtually
+        endless possibilities of generated you can create because every output is different from the last!</p>
         <h2>You Can Start Now!</h2>
-        <p>If you want to start making cool abstract art, simply navigate to the <a href="/create">create</a> page!<pre></pre>There you can create custom art by tweaking the parameter values that are used to generate abstract art. You will be surprised at the variety of outcomes you can achieve!</p>
+        <p>If you want to start making cool abstract art, simply navigate to the <a href="/create">create</a> page!
+        <pre></pre>
+        There you can create custom art by tweaking the parameter values that are used to generate abstract art. You
+        will be surprised at the variety of outcomes you can achieve!</p>
 
         <h2>View The Art That Other People Created</h2>
-        <p>Are you curious what other people have created on this website? Feel free to check out all the artworks that have been uploaded by users on the <a href="/community">Community Gallery</a> page. Don't feel left out! If you <a href="/register">create an account</a>, you can add pieces of your own the community gallery!</p>
+        <p>Are you curious what other people have created on this website? Feel free to check out all the artworks that
+            have been uploaded by users on the <a href="/community">Community Gallery</a> page. Don't feel left out! If
+            you <a href="/register">create an account</a>, you can add pieces of your own the community gallery!</p>
 
-            <h2>Let Your Imagination Run Wild... But Not TOO Wild</h2>
-            <h3 class="orange">*DISCLAIMER*</h3>
-            <p>While creating art on this app, there are different values that you can input into the art generator. Depending on the number of strokes the generator has to create, there can be a great variation in load times. This all may vary based on your hardware and/or browser. Be wary that generating too many strokes can even lead to crashing your browser if the memory usage is too high.</p>
-        </div>
+        <h2>Let Your Imagination Run Wild... But Not TOO Wild</h2>
+        <h3 class="orange">*DISCLAIMER*</h3>
+        <p>While creating art on this app, there are different values that you can input into the art generator.
+            Depending on the number of strokes the generator has to create, there can be a great variation in load
+            times. This all may vary based on your hardware and/or browser. Be wary that generating too many strokes can
+            even lead to crashing your browser if the memory usage is too high.</p>
     </div>
-    <footer>
-        <p>&copy SketchFrame 2022</p>
-    </footer>
+</div>
+<footer>
+    <p>&copy SketchFrame 2022</p>
+</footer>
 </body>
 </html>

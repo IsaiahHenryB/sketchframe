@@ -15,37 +15,44 @@
     <title>SketchFrame: Register</title>
 </head>
 <body>
-    <header>
-        <div th:insert="fragments/nav :: nav"></div>
-        <div class="banner" th:style="'background-image:url(' + @{~/img/Background3.png} + '); background-repeat: no-repeat, repeat; background-size: cover;'">
-            <h1>REGISTER</h1>
-        </div>
-    </header>
-    <div class="content">
-        <form id="register" th:action="@{/register}" method="POST" th:object="${user}">
-            <input type="hidden" name="_subject" value="Question">
-            <h3>Register</h3>
-            <!-- Adding regex validation for the name field to restrict numbers and silly characters but allowing hyphenated names -->
-            <label for="firstname">First Name</label>
-            <input id="firstname" type="text" pattern="[a-zA-Z.\-_]+$" placeholder="Type Your Name Here" th:field="*{firstname}" required autofocus="autofocus"/>
-            
-            <label for="lastname">Last Name</label>
-            <input id="lastname" type="text" pattern="[a-zA-Z.\-_]+$" placeholder="Type Your Name Here" th:field="*{lastname}" required autofocus="autofocus"/>
-            
-            <label for="username">Username</label>
-            <input id="username" type="text" placeholder="Type Your Desired Username Here" th:field="*{username}" required autofocus="autofocus"/>
-            <!-- Regex validation pattern for submitting the correct email format -->
-            <label for="email">Email</label>
-            <input id="email" type="email" pattern="(\w\.?)+@[\w\.-]+\.\w{2,4}" placeholder="Type Your Email Here" th:field="*{email}" required autofocus="autofocus">
-            <label for="password">Password</label>
-            <input id="password" type="password" placeholder="Type Your Desired Password Here" th:field="*{password}" required autofocus="autofocus">
-            <button type="submit">Register</button>
-            <div th:if="${param.success}"><h3 class="good">You Have Been Successfully Registered!</h3></div>
-            <div th:if="${param.error}"><h3 class="bad">Invalid Credentials Please Select a Different Email Or Username.</h3></div>
-        </form>
+<header>
+    <div th:insert="fragments/nav :: nav"></div>
+    <div class="banner"
+         th:style="'background-image:url(' + @{~/img/Background3.png} + '); background-repeat: no-repeat, repeat; background-size: cover;'">
+        <h1>REGISTER</h1>
     </div>
-    <footer>
-        <p>&copy SketchFrame 2022</p>
-    </footer>
+</header>
+<div class="content">
+    <form id="register" th:action="@{/register}" method="POST" th:object="${user}">
+        <input type="hidden" name="_subject" value="Question">
+        <h3>Register</h3>
+        <!-- Adding regex validation for the name field to restrict numbers and silly characters but allowing hyphenated names -->
+        <label for="firstname">First Name</label>
+        <input id="firstname" type="text" pattern="[a-zA-Z.\-_]+$" placeholder="Type Your Name Here"
+               th:field="*{firstname}" required autofocus="autofocus"/>
+
+        <label for="lastname">Last Name</label>
+        <input id="lastname" type="text" pattern="[a-zA-Z.\-_]+$" placeholder="Type Your Name Here"
+               th:field="*{lastname}" required autofocus="autofocus"/>
+
+        <label for="username">Username</label>
+        <input id="username" type="text" placeholder="Type Your Desired Username Here" th:field="*{username}" required
+               autofocus="autofocus"/>
+        <!-- Regex validation pattern for submitting the correct email format -->
+        <label for="email">Email</label>
+        <input id="email" type="email" pattern="(\w\.?)+@[\w\.-]+\.\w{2,4}" placeholder="Type Your Email Here"
+               th:field="*{email}" required autofocus="autofocus">
+        <label for="password">Password</label>
+        <input id="password" type="password" placeholder="Type Your Desired Password Here" th:field="*{password}"
+               required autofocus="autofocus">
+        <button type="submit">Register</button>
+        <div th:if="${param.success}"><h3 class="good">You Have Been Successfully Registered!</h3></div>
+        <div th:if="${param.error}"><h3 class="bad">Invalid Credentials Please Select a Different Email Or
+            Username.</h3></div>
+    </form>
+</div>
+<footer>
+    <p>&copy SketchFrame 2022</p>
+</footer>
 </body>
 </html>

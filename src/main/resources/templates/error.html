@@ -16,18 +16,18 @@
 </head>
 <body>
 
-    <div class="content">
-        <h1 class="orange">Whoops!</h1>
-        <h2 class="orange">Looks like there was an error...</h2>
-        <p>We should head back <a href="/" >home</a>!</p>
-        <button id="view">View More Details</button>
-        <div id="errDetails" class="disappear">
-            <p th:text="${status}">Status</p>
-        	<p th:text="${error}">Error Info</p>
-        </div>
+<div class="content">
+    <h1 class="orange">Whoops!</h1>
+    <h2 class="orange">Looks like there was an error...</h2>
+    <p>We should head back <a href="/">home</a>!</p>
+    <button id="view">View More Details</button>
+    <div id="errDetails" class="disappear">
+        <p th:text="${status}">Status</p>
+        <p th:text="${error}">Error Info</p>
     </div>
-    <footer>
-        <p>&copy SketchFrame 2022</p>
-    </footer>
+</div>
+<footer>
+    <p>&copy SketchFrame 2022</p>
+</footer>
 </body>
 </html>

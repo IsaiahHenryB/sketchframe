@@ -16,24 +16,28 @@
     <title>SketchFrame: View Artwork</title>
 </head>
 <body>
-    <header>
-        <div th:insert="fragments/nav :: nav"></div>
-    </header>
-    <div class="content">
-        <div class="display">
-            <h1 th:text="${artwork.title}">Painting</h1>
-            <h2>By: <span th:text="${artwork.username}"></span></h2>
-                <img th:src="${artwork.image}" alt="">
-            <a th:href="${artwork.image}" th:download="${artwork.title}+' By '+${artwork.username}"><button>Download</button></a>
-            <button id="showdetails">Show The Parameters</button>
-            <div class="onlytext disappear" id="details">
-                <p th:text="${artwork.params}"></p>
-                <a th:href="@{'/remake/'+${artwork.id}}"><button>Create New From Parameters</button></a>
-            </div>
+<header>
+    <div th:insert="fragments/nav :: nav"></div>
+</header>
+<div class="content">
+    <div class="display">
+        <h1 th:text="${artwork.title}">Painting</h1>
+        <h2>By: <span th:text="${artwork.username}"></span></h2>
+        <img th:src="${artwork.image}" alt="">
+        <a th:href="${artwork.image}" th:download="${artwork.title}+' By '+${artwork.username}">
+            <button>Download</button>
+        </a>
+        <button id="showdetails">Show The Parameters</button>
+        <div class="onlytext disappear" id="details">
+            <p th:text="${artwork.params}"></p>
+            <a th:href="@{'/remake/'+${artwork.id}}">
+                <button>Create New From Parameters</button>
+            </a>
         </div>
     </div>
-    <footer>
-        <p>&copy SketchFrame 2022</p>
-    </footer>
+</div>
+<footer>
+    <p>&copy SketchFrame 2022</p>
+</footer>
 </body>
 </html>
