@@ -6,25 +6,15 @@ import com.isaiah.sketchframe.repository.ArtworkRepository;
 import com.isaiah.sketchframe.repository.UserRepository;
 import com.isaiah.sketchframe.service.ArtworkServiceImpl;
 import com.isaiah.sketchframe.service.UserServiceImpl;
-import com.isaiah.sketchframe.web.dto.UserRegistrationDto;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
-import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.junit4.SpringRunner;
-
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -34,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 //Testing a few methods from my service classes
 @ExtendWith(MockitoExtension.class)
 @ExtendWith(SpringExtension.class)
-public class SketchFrameServiceTests {
+public class SketchFrameServiceTestsWithMockito {
     @MockBean
     UserRepository userRepository;
     @MockBean
