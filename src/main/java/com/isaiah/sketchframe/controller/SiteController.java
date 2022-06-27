@@ -176,6 +176,7 @@ public class SiteController implements ErrorController {
                                   @PathVariable(value = "username") String username,
                                   Model model) {
         model.addAttribute("artwork", artworkService.getArtWithIdAndUsername(id, username));
+        logger.trace("User has accessed the image with id: " + id);
         return "mypainting";
     }
 
