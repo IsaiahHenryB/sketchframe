@@ -2,6 +2,7 @@ package com.isaiah.sketchframe.controller;
 
 import com.isaiah.sketchframe.model.Artwork;
 import com.isaiah.sketchframe.model.User;
+import com.isaiah.sketchframe.repository.ArtworkRepository;
 import com.isaiah.sketchframe.repository.UserRepository;
 import com.isaiah.sketchframe.service.ArtworkService;
 import com.isaiah.sketchframe.service.UserService;
@@ -15,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Optional;
 
 @Controller
 public class SiteController implements ErrorController {
@@ -25,6 +27,8 @@ public class SiteController implements ErrorController {
     private UserRepository userRepository;
     @Autowired
     private ArtworkService artworkService;
+    @Autowired
+    ArtworkRepository artworkRepository;
 
     @Autowired
     private HttpServletRequest request;
@@ -180,9 +184,16 @@ public class SiteController implements ErrorController {
     @GetMapping("/delete/{id}/{username}")
     public String deleteArtwork(@PathVariable(value = "id") Long id,
                                 @PathVariable(value = "username") String username) {
-        this.artworkService.deleteArtById(id);
         String loggedInUser = request.getUserPrincipal().getName();
-        logger.trace("User: " + loggedInUser + " has saved deleted artwork with id:" + id);
-        return "redirect:/creations/" + loggedInUser;
+        String artist = artworkService.getArtById(id).getUsername();
+        if(loggedInUser.equals(username)) {
+            this.artworkService.deleteArtById(id);
+            logger.trace("User: " + loggedInUser + " has saved deleted artwork with id:" + id);
+            return "redirect:/creations/" + loggedInUser;
+        } else  {
+            logger.error(username +" Is not the artist of this piece, "+ artist + " is!");
+            return "redirect:/noAccess";
+        }
+
     }
 }
