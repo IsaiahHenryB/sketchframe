@@ -1,6 +1,8 @@
 package com.isaiah.sketchframe.controller;
 
 import com.isaiah.sketchframe.model.Artwork;
+import com.isaiah.sketchframe.model.User;
+import com.isaiah.sketchframe.repository.UserRepository;
 import com.isaiah.sketchframe.service.ArtworkService;
 import com.isaiah.sketchframe.service.UserService;
 import org.slf4j.LoggerFactory;
@@ -19,7 +21,8 @@ public class SiteController implements ErrorController{
 
 		@Autowired
 		private UserService userService;
-
+		@Autowired
+		private UserRepository userRepository;
 		@Autowired
 		private ArtworkService artworkService;
 
@@ -116,7 +119,10 @@ public class SiteController implements ErrorController{
 	@PostMapping("/create")
 	public String createArtWork(@ModelAttribute("artwork") Artwork artwork){
 				String loggedInUser = request.getUserPrincipal().getName();
+				User user = userRepository.findByUsername(loggedInUser);
 				artworkService.save(artwork);
+				user.getArtwork().add(artwork);
+				this.userRepository.save(user);
 				logger.trace("User: "+ loggedInUser +" has uploaded a new artwork!");
 				return "redirect:/creations/"+loggedInUser;
 	}

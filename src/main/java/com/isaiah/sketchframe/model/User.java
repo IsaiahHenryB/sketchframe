@@ -33,15 +33,7 @@ public class User {
 	private Collection<Role> roles;
 	//	Creates relationship between users and their artwork (yet to be implemented as a feature)
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinTable(
-			name = "users_artwork",
-			joinColumns = @JoinColumn(
-					name = "user_id",referencedColumnName = "id"
-			),
-			inverseJoinColumns = @JoinColumn(
-					name = "art_id", referencedColumnName = "id"
-			)
-	)
+	@JoinColumn( name = "user_id", referencedColumnName = "id")
 	private Collection<Artwork> artwork;
 	public User() {
 
@@ -99,5 +91,6 @@ public class User {
 	public void setRoles(Collection<Role> roles) {
 		this.roles = roles;
 	}
-
+	public Collection<Artwork> getArtwork() {return artwork;}
+	public void setArtwork(Collection<Artwork> artwork) {this.artwork = artwork;}
 }
